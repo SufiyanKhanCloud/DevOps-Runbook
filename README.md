@@ -12,6 +12,27 @@ Rather than storing proprietary application code, this playbook documents the op
 * **Backend:** .NET Core Web API
 * **Frontend:** React / Vite (Single Page Application)
 
+## System Architecture
+This diagram illustrates the traffic flow and port configuration of the deployed environment.
+
+
+```mermaid
+graph TD
+    Client([Web Browser]) -- HTTPS / Port 443 --> IIS[IIS Web Server]
+    
+    subgraph Windows Server
+        IIS -- Serves Static Files --> React[React/Vite Frontend]
+        IIS -- Reverse Proxy / Port 8080 --> NET[.NET Core Web API]
+        NET -- TCP / Port 1433 --> SQL[(SQL Server 2022)]
+    end
+    
+    classDef secure fill:#e8f4f8,stroke:#0366d6,stroke-width:2px;
+    class IIS,SQL secure;
+```
+
+
+
+
 ## Core Competencies Documented
 * **Infrastructure Provisioning:** Configuring Windows Server, IIS, and SQL Server from scratch.
 * **Database Security:** Managing Mixed Mode Authentication and configuring TCP/IP firewalls.

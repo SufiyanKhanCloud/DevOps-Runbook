@@ -18,12 +18,12 @@ This diagram illustrates the traffic flow and port configuration of the deployed
 
 ```mermaid
 graph TD
-    Client([Web Browser]) -- HTTPS / Port 443 --> IIS[IIS Web Server]
+    Client([Web Browser]) -- HTTPS / Port 344 --> IIS[IIS Web Server]
     
     subgraph Windows Server
         IIS -- Serves Static Files --> React[React/Vite Frontend]
-        IIS -- Reverse Proxy / Port 8080 --> NET[.NET Core Web API]
-        NET -- TCP / Port 1433 --> SQL[(SQL Server 2022)]
+        IIS -- Reverse Proxy / Port 5050 --> NET[.NET Core Web API]
+        NET -- TCP / Port 1733 --> SQL[(SQL Server 2022)]
     end
     
     classDef secure fill:#e8f4f8,stroke:#0366d6,stroke-width:2px;

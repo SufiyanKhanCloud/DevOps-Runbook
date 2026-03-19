@@ -44,3 +44,9 @@ graph TD
 2. [SQL Server Security & Provisioning](02-sql-server-provisioning.md)
 3. [Resolving SPA Refresh Errors in IIS](03-iis-spa-routing.md)
 4. [Network Debugging & CORS Troubleshooting](04-troubleshooting-cors.md)
+
+## Future Enhancements (Roadmap)
+While this current architecture is stable and secure for a standalone Windows Server environment, future iterations of this deployment pipeline will focus on automation and observability:
+* **CI/CD Automation:** Implement GitHub Actions to automatically compile the `.NET` backend and bundle the `React` frontend upon merging to the main branch.
+* **Centralized Logging:** Integrate Serilog into the backend to write rolling log files directly to the server, eliminating the need to manually execute the binary for debugging.
+* **Secret Management:** Migrate the hardcoded SQL `sa` credentials out of `appsettings.json` and into Windows Environment Variables to prevent accidental credential leakage.
